@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>霸凌問卷調查</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background 0.5s ease-in-out;
+            color: #333;
+        }
+
+        body.page10 {
+            background: url('blood1.jpg') no-repeat center center/cover;
+        }
+
+        body.page11 {
+            background: url('blood2.jpg') no-repeat center center/cover;
+        }
+
+        body.page12 {
+            background: url('blood3.jpg') no-repeat center center/cover;
+        }
+
+        body.page13 {
+            background: url('blood4.jpg') no-repeat center center/cover;
+        }
+
+        body.page14 {
+            background: url('blood5.jpg') no-repeat center center/cover;
+        }
+
+        body.page16 {
+            background: url('smile2.jpg') no-repeat center center/cover;
+        }
+
+
+
+        .form-container {
+            background: rgba(227, 227, 227, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-page {
+            display: none;
+        }
+
+        .form-page.active {
+            display: block;
+        }
+
+        .form-page h2 {
+            margin-top: 0;
+        }
+
+        .form-page input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .form-page button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background: #ed3c3c;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .form-page button:hover {
+            background: #0056b3;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-buttons button:first-child {
+            background: #6c757d;
+        }
+
+        .form-buttons button:first-child:hover {
+            background: #5a6268;
+        }
+
+        #flashing-page1 {
+            
+            text-align: center;
+        }
+        #flashing-page1 h2{
+            color: #ed3c3c;
+        }
+
+        .option {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+    .option.visible {
+        opacity: 1;
+        transform: translateY(0);
+        }
+
+        .radio-group label.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+.radio-group label.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+        #flashing-page2 {
+            
+            text-align: center;
+        }
+
+        #flashing-page2 h1{
+            color: #ed3c3c;
+        }
+
+        #flashing-page2 h2{
+            color: #992b2b;
+        }
+
+        #page9 .form-buttons button {
+            padding: 13px 26px; /* 调整按钮大小 */
+            border: none;
+            border-radius: 20px; /* 调整按钮形状 */
+            background: #4b3ced; /* 设置按钮背景色 */
+            color: #fff; /* 设置按钮文字颜色 */
+            font-size: 18px; /* 调整按钮文字大小 */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* 确保垂直居中 */
+        }
+
+#page9 .form-buttons button:hover {
+    background: #d37b6d; /* 鼠标悬停时的颜色 */
+}
+
+
+
+
+#page10 .form-buttons button {
+            padding: 16px 32px; /* 调整按钮大小 */
+            border: none;
+            border-radius: 20px; /* 调整按钮形状 */
+            background: #4b3ced; /* 设置按钮背景色 */
+            color: #fff; /* 设置按钮文字颜色 */
+            font-size: 18px; /* 调整按钮文字大小 */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* 确保垂直居中 */
+        }
+
+#page10 .form-buttons button:hover {
+    background: #d37b6d; /* 鼠标悬停时的颜色 */
+}
+
+
+
+
+
+
+#page11 .form-buttons button {
+            padding: 19px 38px; /* 调整按钮大小 */
+            border: none;
+            border-radius: 20px; /* 调整按钮形状 */
+            background: #4b3ced; /* 设置按钮背景色 */
+            color: #fff; /* 设置按钮文字颜色 */
+            font-size: 18px; /* 调整按钮文字大小 */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* 确保垂直居中 */
+        }
+
+#page11 .form-buttons button:hover {
+    background:  #d37b6d; /* 鼠标悬停时的颜色 */
+}
+
+
+
+
+
+
+
+#page12 .form-buttons button {
+            padding: 22px 42px; /* 调整按钮大小 */
+            border: none;
+            border-radius: 20px; /* 调整按钮形状 */
+            background: #4b3ced; /* 设置按钮背景色 */
+            color: #fff; /* 设置按钮文字颜色 */
+            font-size: 18px; /* 调整按钮文字大小 */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* 确保垂直居中 */
+        }
+
+#page12 .form-buttons button:hover {
+    background: #d37b6d; /* 鼠标悬停时的颜色 */
+}
+
+
+
+
+
+
+#page13 .form-buttons button {
+            padding: 25px 48px; /* 调整按钮大小 */
+            border: none;
+            border-radius: 20px; /* 调整按钮形状 */
+            background: #4b3ced; /* 设置按钮背景色 */
+            color: #fff; /* 设置按钮文字颜色 */
+            font-size: 18px; /* 调整按钮文字大小 */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* 确保垂直居中 */
+        }
+
+#page13 .form-buttons button:hover {
+    background: #d37b6d; /* 鼠标悬停时的颜色 */
+}
+
+#input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#display-text {
+    font-size: 20px;
+    color: rgba(227, 227, 227, 0.8); /* 红色显示的伪造文字 */
+    margin-bottom: 10px;
+    height: 40px; /* 固定高度以避免内容跳动 */
+    text-align: center;
+}
+
+#user-input {
+    font-size: 18px;
+    padding: 8px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+#user-input:focus {
+    border-color: #ed3c3c; /* 输入框高亮颜色 */
+}
+    </style>
+</head>
+
+
+<body class="page1">
+    <div class="form-container">
+
+
+        <!-- Step 4.5 (Flashing Page) -->
+        <div id="flashing-page1" class="form-page">
+            <h2><strong>說你沒有</strong></h2>
+            <div class="radio-group">
+                <label><input type="radio" name="flashing" required>好 對不起</label>
+                <label><input type="radio" name="flashing" required>好 對不起</label>
+                <label><input type="radio" name="flashing" required>好 對不起</label>
+            </div>
+        </div>
+        
+        <!-- Step 1 -->
+        <div id="page1" class="form-page active">
+            <h2>請問你是否知道什麼是霸凌</h2>
+            <div class="radio-group">
+                <label><input type="radio" name="understanding" required>了解</label>
+                <label><input type="radio" name="understanding" required>大致了解</label>
+                <label><input type="radio" name="understanding" required>不了解</label>
+            </div>
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div id="page2" class="form-page">
+            <h2>請問你是否知道如何構成霸凌</h2>
+            <div class="radio-group">
+                <label><input type="radio" name="understanding" required>了解</label>
+                <label><input type="radio" name="understanding" required>大致了解</label>
+                <label><input type="radio" name="understanding" required>不了解</label>
+            </div>
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div id="page3" class="form-page">
+            <h2>你是否遭受過霸凌</h2>
+            <div class="radio-group">
+                <label><input type="radio" name="understanding" required>是</label>
+                <label><input type="radio" name="understanding" required>否</label>
+            </div>
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        
+
+        <!-- Step 4 -->
+        <div id="page4" class="form-page">
+            <h2>你認為被霸凌者會有何種心態</h2>
+            <div id="options-container" class="radio-group">
+                <label class="hidden"><input type="radio" name="mindset" required>這些</label>
+                <label class="hidden"><input type="radio" name="mindset" required>都是我</label>
+                <label class="hidden"><input type="radio" name="mindset" required>活該</label>
+            </div>
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div id="page5" class="form-page">
+            <h2>接下來你會看到一些描述</h2>
+            <br/>
+            <h2>基於你的想法，請從"非常同意"到"非常不同意"的範圍之間選擇你的同意程度</h2>
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div id="page6" class="form-page">
+            <h2>只要不反擊就不會被繼續霸凌</h2>
+            <div class="radio-group">
+                <label><input type="radio" name="reaction1" required>非常同意</label>
+                <label><input type="radio" name="reaction1" required>同意</label>
+                <label><input type="radio" name="reaction1" required>無感</label>
+                <label><input type="radio" name="reaction1" required>不同意</label>
+                <label><input type="radio" name="reaction1" required>非常不同意</label>
+            </div>
+        
+            <h2>被霸凌者總會忍氣吞聲</h2>
+            <div class="radio-group">
+                <label><input type="radio" name="reaction2" required>非常同意</label>
+                <label><input type="radio" name="reaction2" required>同意</label>
+                <label><input type="radio" name="reaction2" required>無感</label>
+                <label><input type="radio" name="reaction2" required>不同意</label>
+                <label><input type="radio" name="reaction2" required>非常不同意</label>
+            </div>
+        
+            <h2>我不會反擊</h2>
+            <div class="radio-group">
+                <label><input type="radio" name="reaction3" required>非常同意</label>
+                <label><input type="radio" name="reaction3" required>同意</label>
+                <label><input type="radio" name="reaction3" required>無感</label>
+                <label><input type="radio" name="reaction3" required>不同意</label>
+                <label><input type="radio" name="reaction3" required>非常不同意</label>
+            </div>
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div id="page7" class="form-page">
+            <h2>如果遭受霸凌我會向他人求助</h2>
+            <div class="radio-group">
+                <label><input type="radio" name="understanding" required>是</label>
+                <label><input type="radio" name="understanding" required>否</label>
+            </div>
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+
+        <!-- Step 8 -->
+        <div id="page8" class="form-page">
+            <h2>我被別人霸凌都是自作自受</h2>
+            <div class="radio-group">
+                <label><input type="radio" name="understanding" required>是</label>
+                <label><input type="radio" name="understanding" required>是</label>
+                <label><input type="radio" name="understanding" required>是</label>
+                <label><input type="radio" name="understanding" required>是</label>
+                <label><input type="radio" name="understanding" required>是</label>
+                <label><input type="radio" name="understanding" required>是</label>
+            </div>
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">對不起</button>
+            </div>
+        </div>
+
+        <!-- Step 9 -->
+        <div id="page9" class="form-page">
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">對不起</button>
+            </div>
+        </div>
+
+        <!-- Step 9 -->
+        <div id="page10" class="form-page">
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">對不起</button>
+            </div>
+        </div>
+
+
+        <!-- Step 9 -->
+        <div id="page11" class="form-page">
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">對不起</button>
+            </div>
+        </div>
+
+
+        <!-- Step 9 -->
+        <div id="page12" class="form-page">
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">對不起</button>
+            </div>
+        </div>
+
+
+        <!-- Step 9 -->
+        <div id="page13" class="form-page">
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">對不起</button>
+            </div>
+        </div>
+
+
+        <!-- Step 10 -->
+        <div id="page14" class="form-page">
+            <h2>你認為會被霸凌的主因為何</h2>
+            <div id="input-container">
+                <p id="display-text"></p>
+                <input type="text" id="user-input" placeholder="請輸入..." maxlength="30" />
+            </div>
+            <div class="form-buttons">
+                <span></span>
+                <button type="button" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+
+        <!-- Step 11 -->
+        <div id="page15" class="form-page">
+            <h2>感謝參與本次問卷</h2>
+            <br/>
+            <h2>祝您有個美好的一天</h2>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- Step 7.5 (Flashing Page) -->
+                <div id="flashing-page2" class="form-page">
+                    <h1><strong>沒有人救得了你</strong></h1>
+                    <h2><strong>沒有人沒有人沒有人沒有人沒有人沒有人沒有人沒有人沒有人沒有人沒有人沒有人沒有人沒有人沒有人沒有人</strong></h2>
+                </div>
+    </div>
+
+
+
+    <script>
+        let currentPage = 1;
+
+        function showOptionsSequentially() {
+    const options = document.querySelectorAll("#page4 .radio-group label.hidden");
+    let delay = 0;
+
+    options.forEach((option) => {
+        setTimeout(() => {
+            option.classList.add("visible"); // 添加显示的类
+            option.classList.remove("hidden"); // 移除隐藏的类
+        }, delay);
+        delay += 1000; // 每个选项间隔 1 秒
+    });
+}
+
+function showPage(pageIdentifier) {
+    const pages = document.querySelectorAll('.form-page');
+    const body = document.body;
+
+    if (typeof pageIdentifier === 'string') {
+        pages.forEach(page => page.classList.remove('active'));
+        document.getElementById(pageIdentifier).classList.add('active');
+        body.className = ''; // 重置背景
+    } else {
+        pages.forEach((page, index) => {
+            page.classList.toggle('active', index + 1 === pageIdentifier);
+        });
+        body.className = `page${pageIdentifier}`; // 设置背景
+    }
+}
+
+
+function nextPage() {
+    const totalPages = document.querySelectorAll('.form-page').length;
+
+    if (currentPage === 4) {
+        // 当前是第4页，显示闪烁页面1
+        showPage('flashing-page1');
+
+        setTimeout(() => {
+            currentPage++; // 更新页码为第5页
+            showPage(5); // 显示第5页
+            showOptionsSequentially(); // 添加这一行确保选项显示
+        }, 1500);
+
+    } else if (currentPage === 8) {
+        // 当前是第7页，显示闪烁页面2
+        showPage('flashing-page2');
+
+        setTimeout(() => {
+            currentPage++; // 更新页码为第8页
+            showPage(9); // 显示第8页
+        }, 1500);
+
+    } else if (currentPage < totalPages) {
+        // 常规页面切换逻辑
+        currentPage++;
+        showPage(currentPage);
+
+        // 如果是第5页，执行逐步显示选项逻辑
+        if (currentPage === 5) {
+            showOptionsSequentially();
+        }
+    }
+}
+
+const userInput = document.getElementById("user-input");
+const displayText = document.getElementById("display-text");
+
+// 定义伪造的文本，按顺序显示
+const fakeResponses = [
+    "這", "這全都", "這全都是我", "這全都是我自作自受", "這全都是我自作自受，對不起", "這全都是我自作自受，對不起我不該", "這全都是我自作自受，對不起我不該去招惹",
+    "這全都是我自作自受，對不起我不該去招惹其他人", "這全都是我自作自受，對不起我不該去招惹其他人，都是", "這全都是我自作自受，對不起我不該去招惹其他人，都是我", "這全都是我自作自受，對不起我不該去招惹其他人，都是我的錯"
+];
+
+// 记录当前显示的伪造文本索引
+let currentIndex = 0;
+
+// 监听输入框的输入事件
+userInput.addEventListener("input", () => {
+    // 每输入一个字符，就按顺序替换文本
+    if (currentIndex < fakeResponses.length) {
+        // 更新显示的伪造文本
+        displayText.textContent = fakeResponses[currentIndex];
+        displayText.style.visibility = 'visible';  // 显示文本
+        currentIndex++;  // 更新索引，显示下一个伪造文本
+    } else {
+        // 超过伪造文本的长度后，显示最后一条文本
+        displayText.textContent = fakeResponses[fakeResponses.length - 1];
+    }
+
+    // 每次输入一个字符后替换输入框中的文本
+    userInput.value = displayText.textContent;
+});
+
+    </script>
+</body>
+</html>
